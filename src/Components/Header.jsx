@@ -17,11 +17,20 @@ export default function Header({ facade, LoggedIn }) {
             Home
           </NavLink>
         </li>
+        {facade.hasUserAccess("user", LoggedIn) && (
+          <div>
+            <li>
+              <NavLink activeClassName="active" to="/events">
+                Dinner events
+              </NavLink>
+            </li>
+          </div>
+        )}
         {facade.hasUserAccess("admin", LoggedIn) && (
           <div>
             <li>
-              <NavLink activeClassName="active" to="/facts">
-                Facts
+              <NavLink activeClassName="active" to="/CreateEvent">
+                Add event
               </NavLink>
             </li>
           </div>

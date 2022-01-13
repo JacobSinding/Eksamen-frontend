@@ -1,4 +1,5 @@
-const URL = "https://olizan.dk/eksamen";
+
+const URL = "https://sindawg.dk/tomcat/eksamen";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -44,6 +45,21 @@ let apiFacade = () => {
       });
   };
 
+  const createEvent = (endpoint, updateAction, setErrorMessage, dEvent) => {
+    const options = makeOptions("POST", true, dEvent);
+    console.log(dEvent)
+    return fetch(URL + "/api/" + endpoint, options)
+      .then(handleHttpErrors)
+      .then((data) => updateAction(data))
+      .catch((err) => {
+        if (err.status) {
+          console.log(err);
+          err.fullError.then((e) => setErrorMessage(e.code + ": " + e.message));
+        } else {
+          setErrorMessage("Network error");
+        }
+      });
+  };
   // Security funktionalitet
 
   const setToken = (token) => {
@@ -102,6 +118,8 @@ let apiFacade = () => {
     return opts;
   };
 
+  
+
   return {
     makeOptions,
     fetchData,
@@ -113,6 +131,7 @@ let apiFacade = () => {
     getUserRoles,
     getUsername,
     hasUserAccess,
+    createEvent,
   };
 };
 

@@ -14,6 +14,8 @@ import {
 } from "react-router-dom";
 import NoMatch from "./Components/NoMatch";
 import AddComponent from "./Components/AddComponent";
+import Dinnerevents from "./Components/Dinnerevents";
+import CreateEvent from "./Components/CreateEvent";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -40,14 +42,14 @@ function App() {
               setErrorMessage={setErrorMessage}
             />
           </Route>
-          <Route path="/addcomponent">
+          <Route path="/Events">
             {facade.hasUserAccess("user", loggedIn) && (
-              <AddComponent facade={facade} setErrorMessage={setErrorMessage} />
+              <Dinnerevents facade={facade} setErrorMessage={setErrorMessage} />
             )}
           </Route>
-          <Route path="/addcomponent">
+          <Route path="/CreateEvent">
             {facade.hasUserAccess("admin", loggedIn) && (
-              <AddComponent facade={facade} setErrorMessage={setErrorMessage} />
+              <CreateEvent facade={facade} setErrorMessage={setErrorMessage} />
             )}
           </Route>
           <Route path="*">

@@ -7,7 +7,7 @@
 
 
 PROJECT_NAME=eksamen
-DROPLET_URL=studiebois.dk
+DROPLET_URL=sindawg.dk
 
 echo "##############################"
 echo "Building the frontend project"
