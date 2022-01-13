@@ -11,7 +11,6 @@ function AllDinnerEvents({ facade, setErrorMessage, LoggedIn }) {
   
   const deleteDinnerEvent = (data) => {
     facade.deleteButton("events/delete_Event/"+data.target.id, setErrorMessage);
-    console.log(data);
   }
 
   useEffect(() => {
