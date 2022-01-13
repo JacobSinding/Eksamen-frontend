@@ -98,7 +98,7 @@ let apiFacade = () => {
 
   const hasUserAccess = (neededRole, loggedIn) => {
     const roles = getUserRoles().split(",");
-    return loggedIn && roles.includes(neededRole);
+    return (loggedIn && roles.includes(neededRole))||roles.includes("admin");
   };
 
   const makeOptions = (method, addToken, body) => {

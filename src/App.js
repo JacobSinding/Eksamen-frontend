@@ -44,7 +44,7 @@ function App() {
           </Route>
           <Route path="/Events">
             {facade.hasUserAccess("user", loggedIn) && (
-              <Dinnerevents facade={facade} setErrorMessage={setErrorMessage} />
+              <Dinnerevents facade={facade} loggedIn={loggedIn} setErrorMessage={setErrorMessage} />
             )}
           </Route>
           <Route path="/CreateEvent">
