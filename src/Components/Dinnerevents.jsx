@@ -3,7 +3,7 @@ function Dinnerevents({facade, setErrorMessage }) {
   return (
     <div>
       <div>
-        <h3>Dinner events: <AllDinnerEvents facade={facade} setErrorMessage={setErrorMessage} /></h3>
+        <h5>Dinner events: <AllDinnerEvents facade={facade} setErrorMessage={setErrorMessage} /></h5>
       </div>
     </div>
   );

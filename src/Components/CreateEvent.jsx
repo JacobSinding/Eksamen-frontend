@@ -15,6 +15,7 @@ const CreateEvent = ({ facade, setErrorMessage }) => {
   const dataSubmit = (event) => {
     event.preventDefault();
     facade.createEvent("events/create_Event", result, setErrorMessage, DEvent);
+    alert("Event has been created")
   };
 
 
@@ -22,15 +23,16 @@ const CreateEvent = ({ facade, setErrorMessage }) => {
   return (
     <div>
       <form onChange={dataInput} >
-        <label for="time">time:</label>
-        <input type="datetime-local" id="time" name="time" />
-        <label for="location">location:</label>
-        <input type="text" id="location" name="location" />
-        <label for="dish">dish:</label>
-        <input type="text" id="dish" name="dish" />
-        <label for="price">price:</label>
-        <input type="text" id="price" name="price" />
-        <button onClick={dataSubmit}>submit event</button>
+        <label for="time">Date & Time</label>
+        <input class="form-control" type="datetime-local" id="time" name="time" />
+        <label for="location">Location:</label>
+        <input class="form-control" placeholder="Lokation" type="text" id="location" name="location" />
+        <label for="dish">Dish:</label>
+        <input class="form-control" placeholder="Ret" type="text" id="dish" name="dish" />
+        <label for="price">Price:</label>
+        <input class="form-control" placeholder="Pris" type="text" id="price" name="price" />
+        <br/>
+        <button class="btn btn-success" onClick={dataSubmit}>submit event</button>
       </form>
     </div>
   );

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Form } from "react-bootstrap";
 
 export default function Login({ facade, setLoggedIn, setErrorMessage }) {
   const init = { username: "", password: "" };
@@ -24,9 +25,11 @@ export default function Login({ facade, setLoggedIn, setErrorMessage }) {
     <div>
       <h2>Login</h2>
       <form onChange={onChange}>
-        <input placeholder="User Name" id="username" />
-        <input placeholder="Password" id="password" />
-        <button onClick={performLogin}>Login</button>
+        <input class="form-control" placeholder="User Name" id="username" />
+        <br/>
+        <input type="password" class="form-control" placeholder="Password" id="password" />
+        <br/>
+        <button class="btn btn-secondary" onClick={performLogin}>Login</button>
       </form>
     </div>
   );
