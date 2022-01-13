@@ -60,6 +60,22 @@ let apiFacade = () => {
         }
       });
   };
+
+  const deleteButton = (endpoint, updateAction, setErrorMessage) => {
+    const options = makeOptions("DELETE", true); //True add's the token
+    return fetch(URL + "/api/" + endpoint, options)
+      .then(handleHttpErrors)
+      .then((data) => updateAction(data))
+      .catch((err) => {
+        if (err.status) {
+          console.log(err);
+          err.fullError.then((e) => setErrorMessage(e.code + ": " + e.message));
+        } else {
+          setErrorMessage("Network error");
+        }
+      });
+    }
+
   // Security funktionalitet
 
   const setToken = (token) => {
@@ -132,6 +148,7 @@ let apiFacade = () => {
     getUsername,
     hasUserAccess,
     createEvent,
+    deleteButton,
   };
 };
 

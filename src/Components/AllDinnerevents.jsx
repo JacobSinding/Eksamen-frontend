@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Table } from "react-bootstrap";
+
 
 function AllDinnerEvents({ facade, setErrorMessage, LoggedIn }) {
   const [dinnerevents, setAllDinnerevents] = useState([]);
@@ -8,20 +8,17 @@ function AllDinnerEvents({ facade, setErrorMessage, LoggedIn }) {
     setAllDinnerevents(data);
     console.log(data);
   };
-
-  const deleteButton = (id) => {
-    fetch(`https://sindawg.dk/tomcat/eksamen/api/events/delete_Event/${id}`, {
-      method: 'DELETE'
-    }).then((result)=>{
-      result.json().then((resp)=>{
-       console.log(resp)
-      })
-    })
+  
+  const deleteDinnerEvent = (data) => {
+    facade.deleteButton("events/delete_Event/"+data.target.id, setErrorMessage);
+    console.log(data);
   }
 
   useEffect(() => {
     facade.fetchData("events/getAllEvents", getDinnerEvents, setErrorMessage);
   }, [facade, setErrorMessage]);
+
+  
 
   return (
     <div>
@@ -48,7 +45,7 @@ function AllDinnerEvents({ facade, setErrorMessage, LoggedIn }) {
               <td>{x.dish}</td>
               <td>{x.price}</td>
               {facade.hasUserAccess("admin", LoggedIn) && (
-          <td><button onClick={deleteButton}>Delete</button></td>
+          <td><button id={x.id} onClick={deleteDinnerEvent}>Delete</button></td>
         )}
             </tr>
           </tbody>
