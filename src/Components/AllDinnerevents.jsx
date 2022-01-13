@@ -6,19 +6,20 @@ function AllDinnerEvents({ facade, setErrorMessage, LoggedIn }) {
 
   const getDinnerEvents = (data) => {
     setAllDinnerevents(data);
-    console.log(data);
   };
   
-  const deleteDinnerEvent = (data) => {
-    facade.deleteButton("events/delete_Event/"+data.target.id, setErrorMessage);
+  //delete dinner event, bruger target til at hente id på hvilken der skal slettes.
+  const deleteDinnerEvent = (d) => {
+    facade.deleteButton("events/delete_Event/"+d.target.id, setErrorMessage);
   }
 
+  //fetcher alle events
   useEffect(() => {
     facade.fetchData("events/getAllEvents", getDinnerEvents, setErrorMessage);
   }, [facade, setErrorMessage]);
 
   
-
+//Opretter table, mapper alle dinnerevents, displaye info som i. Knap kun synlig for admin brugere.
   return (
     <div>
       <table class="table table-striped">
@@ -32,19 +33,19 @@ function AllDinnerEvents({ facade, setErrorMessage, LoggedIn }) {
             <th>Options</th>
           </tr>
         </thead>
-        {dinnerevents.map((x) => (
+        {dinnerevents.map((i) => (
           <tbody>
             <tr>
-              <td>{x.id}</td>
+              <td>{i.id}</td>
               <td>
-                {x.time.date.day}/{x.time.date.month}/{x.time.date.year},
-                {x.time.time.hour}:{x.time.time.minute}
+                {i.time.date.day}/{i.time.date.month}/{i.time.date.year},
+                {i.time.time.hour}:{i.time.time.minute}
               </td>
-              <td>{x.location}</td>
-              <td>{x.dish}</td>
-              <td>{x.price}</td>
+              <td>{i.location}</td>
+              <td>{i.dish}</td>
+              <td>{i.price}</td>
               {facade.hasUserAccess("admin", LoggedIn) && (
-          <td><button id={x.id} onClick={deleteDinnerEvent}>Delete</button></td>
+          <td><button id={i.id} onClick={deleteDinnerEvent}>Delete</button></td>
         )}
             </tr>
           </tbody>

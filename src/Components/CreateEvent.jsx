@@ -5,18 +5,20 @@ const CreateEvent = ({ facade, setErrorMessage }) => {
   const [DEvent, setevent] = useState(init);
   const dataInput = (event) => {
     setevent({ ...DEvent, [event.target.id]: event.target.value });
-    console.log(DEvent);
   };
+
   const result = (data) => {
     console.log(data);
   };
+
+  //her er eventlisterner til add event knappen
   const dataSubmit = (event) => {
     event.preventDefault();
     facade.createEvent("events/create_Event", result, setErrorMessage, DEvent);
   };
 
 
-
+//data bliver opdateret når det kommer ind, de bliver finder deres plads gennem dataInput target funktion.
   return (
     <div>
       <form onChange={dataInput} >
@@ -31,7 +33,6 @@ const CreateEvent = ({ facade, setErrorMessage }) => {
         <button onClick={dataSubmit}>submit event</button>
       </form>
     </div>
-    
   );
 };
 

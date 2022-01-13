@@ -47,7 +47,7 @@ function App() {
               <Dinnerevents facade={facade} loggedIn={loggedIn} setErrorMessage={setErrorMessage} />
             )}
           </Route>
-          <Route path="/CreateEvent">
+          <Route path="/Event">
             {facade.hasUserAccess("admin", loggedIn) && (
               <CreateEvent facade={facade} setErrorMessage={setErrorMessage} />
             )}

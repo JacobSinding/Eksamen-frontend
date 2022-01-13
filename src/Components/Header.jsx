@@ -20,7 +20,7 @@ export default function Header({ facade, LoggedIn }) {
         {facade.hasUserAccess("user", LoggedIn) && (
           <div>
             <li>
-              <NavLink activeClassName="active" to="/events">
+              <NavLink activeClassName="active" to="/Events">
                 Dinner events
               </NavLink>
             </li>
@@ -29,7 +29,7 @@ export default function Header({ facade, LoggedIn }) {
         {facade.hasUserAccess("admin", LoggedIn) && (
           <div>
             <li>
-              <NavLink activeClassName="active" to="/CreateEvent">
+              <NavLink activeClassName="active" to="/Event">
                 Add event
               </NavLink>
             </li>

@@ -3,8 +3,7 @@ function Events({ logout, facade, setErrorMessage }) {
     return (
         <div>
             <div>
-
-                <p>create <CreateEvent facade={facade} setErrorMessage={setErrorMessage} /></p>
+                <h3>Create new event<CreateEvent facade={facade} setErrorMessage={setErrorMessage} /></h3>
             </div>
         </div>
     );

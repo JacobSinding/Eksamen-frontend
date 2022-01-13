@@ -45,6 +45,7 @@ let apiFacade = () => {
       });
   };
 
+  //metode til create event, her bliver det også bestemt at den skal poste
   const createEvent = (endpoint, updateAction, setErrorMessage, dEvent) => {
     const options = makeOptions("POST", true, dEvent);
     console.log(dEvent)
@@ -61,6 +62,7 @@ let apiFacade = () => {
       });
   };
 
+  //metode til delete, bliver bestemt der skal DELETE
   const deleteButton = (endpoint, updateAction, setErrorMessage) => {
     const options = makeOptions("DELETE", true); //True add's the token
     return fetch(URL + "/api/" + endpoint, options)
