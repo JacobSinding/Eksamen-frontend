@@ -14,7 +14,7 @@ function AllDinnerEvents({ facade, setErrorMessage, LoggedIn }) {
       method: 'DELETE'
     }).then((result)=>{
       result.json().then((resp)=>{
-        console.warn(resp)
+       console.log(resp)
       })
     })
   }
@@ -28,15 +28,18 @@ function AllDinnerEvents({ facade, setErrorMessage, LoggedIn }) {
       <table class="table table-striped">
         <thead class="thead-dark">
           <tr>
+            <th>ID</th>
             <th>Dato & tid</th>
             <th>Lokation</th>
             <th>Ret</th>
             <th>Pris</th>
+            <th>Options</th>
           </tr>
         </thead>
         {dinnerevents.map((x) => (
           <tbody>
             <tr>
+              <td>{x.id}</td>
               <td>
                 {x.time.date.day}/{x.time.date.month}/{x.time.date.year},
                 {x.time.time.hour}:{x.time.time.minute}
